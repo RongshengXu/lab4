@@ -2,14 +2,14 @@
  * Created by rongshengxu on 11/25/15.
  */
 //package org.openqa.selenium.example;
-import static org.junit.Assert.*;
-import java.lang.*;
+
+import junit.framework.TestCase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
-public class selenium_test {
+public class selenium_test extends TestCase{
     public static void test_normal() {
 
         // turn off htmlunit warnings
@@ -51,12 +51,18 @@ public class selenium_test {
         element.click();
         element.submit();
         assertTrue(driver.getPageSource().contains("Temperature in Austin = 72 degrees Farenheit"));
-        System.out.println("Temperature in Berkeley = 100 degrees Farenheit");
+        System.out.println("Temperature in Austin = 100 degrees Farenheit");
         driver.quit();
     }
 
     public void test_login() {
 
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         String u = "bo";
         String p = "bathtub";
 
@@ -149,9 +155,9 @@ public class selenium_test {
 
     public static int main(String[] argc) {
         selenium_test task = new selenium_test();
-//        task.test_normal();
-//        task.test_login();
-        task.test_input(false);
+        task.test_normal();
+        task.test_login();
+        task.test_input(true);
         return 0;
     }
 }
